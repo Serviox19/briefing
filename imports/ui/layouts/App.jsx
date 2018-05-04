@@ -1,12 +1,13 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import ReduxPromise from "redux-promise";
+import promiseMiddleware from "redux-promise";
+import Async from '../middleware/async';
 
 import reducers from '../reducers';
 
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+const createStoreWithMiddleware =
+applyMiddleware(Async, promiseMiddleware)(createStore);
 
 export const App = ({content}) => (
   <Provider store={createStoreWithMiddleware(reducers)}>
