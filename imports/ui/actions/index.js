@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { GET_WEATHER } from './types';
+import { GET_LOCATION } from './types';
 
 export const getWeather = () => {
   const apiKey = '10e2310812136c56b7f7d99a26e6ea19';

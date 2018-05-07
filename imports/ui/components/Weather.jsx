@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 class WeatherComponent extends Component {
   constructor(props) {
     super(props);
+  }
 
+  componentDidMount() {
     this.props.getWeather();
   }
 
@@ -25,7 +26,7 @@ class WeatherComponent extends Component {
     console.log(this.props);
     return (
       <div>
-        <h1>Weather Component</h1>
+        <h2>Weather Component</h2>
         {this.renderWeather()}
       </div>
     );
