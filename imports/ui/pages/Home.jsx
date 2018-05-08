@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import WeatherComponent from '../components/Weather';
+import { Spinner } from '../components/Spinner';
 
 export default class Home extends Component {
   constructor() {
@@ -23,11 +24,9 @@ export default class Home extends Component {
         });
       }
 
-      function error(err) {
-        if (error.code == error.PERMISSION_DENIED) {
-          _this.setState({ locationFetchFailed: true })
-        } else {
-          return err;
+      function error(error) {
+        if (error) {
+          _this.setState({ locationFetchFailed: true });
         }
       }
     }
@@ -39,11 +38,11 @@ export default class Home extends Component {
       console.log(this.state.location);
     } else if (this.state.locationFetchFailed) {
         return (
-          <h1>fething location failed enter zipcode below please</h1>
+          <h1>Fething location failed, enter zipcode below please</h1>
         )
     } else {
         return (
-          <h1>fething location</h1>
+          <Spinner />
         )
     }
   }
@@ -51,7 +50,6 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <h1>Home Page</h1>
         {this.renderComponents()}
       </div>
     );
