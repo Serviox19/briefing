@@ -8,9 +8,11 @@ class WeatherComponent extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
     let zip = this.props.zipCode;
-    let location = this.props.location;
+    let location = {
+      lat: this.props.location.latitude,
+      long: this.props.location.longitude
+    };
 
     if (this.props.zipCode) {
       this.props.getWeather({ zip });

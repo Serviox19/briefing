@@ -15,6 +15,16 @@ export const getWeather = ({ zip }) => {
   }
 };
 
-// export const getGeoWeather = ({ location }) => {
-//
-// }
+export const getGeoWeather = ({ location }) => {
+  const apiKey = '10e2310812136c56b7f7d99a26e6ea19';
+
+  let uri = `http://api.openweathermap.org/data/2.5/weather`;
+  uri += `?lat=${location.lat}&lon=${location.long}&appid=${apiKey}&units=imperial`;
+
+  const request = axios.get(uri);
+
+  return {
+    type: GET_GEO_WEATHER,
+    payload: request
+  }
+}
