@@ -1,0 +1,51 @@
+#form-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #262B3E;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #F5F5F5;
+
+  h2 {
+    font-family: Verdana, Helvetica, serif;
+    font-size: 22px;
+    font-weight: 300;
+  }
+
+  form {
+
+
+    input {
+      text-align: center;
+      display: block;
+      background: none;
+      padding: 5px;
+      font-size: 1rem;
+      border-width: 0;
+      border-color: transparent;
+      line-height: 1.9;
+      width: 100%;
+      color: #F5F5F5;
+      transition: all .3s ease;
+      box-shadow: none;
+      border-bottom: (1rem / 16) solid #F5F5F5;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::-webkit-input-placeholder {
+         text-align: center;
+      }
+
+      &::-moz-placeholder {
+         text-align: center;
+      }
+    }
+  }
+}

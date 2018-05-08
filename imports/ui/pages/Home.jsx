@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import WeatherComponent from '../components/Weather';
+import ZipCode from '../components/ZipForm';
 import { Spinner } from '../components/Spinner';
 
 export default class Home extends Component {
@@ -9,6 +11,8 @@ export default class Home extends Component {
     this.state = {
       locationFetchFailed: false,
       hasLocation: false,
+      hasZipCode: false,
+      zipCode: '',
       location: ''
     }
 
@@ -34,16 +38,37 @@ export default class Home extends Component {
 
   renderComponents() {
     if (this.state.hasLocation) {
-      return <WeatherComponent location={this.state.location} />
-      console.log(this.state.location);
+      return (
+        <React.Fragment>
+          <WeatherComponent
+            location={this.state.location}
+          />
+        </React.Fragment>
+      );
     } else if (this.state.locationFetchFailed) {
         return (
-          <h1>Fething location failed, enter zipcode below please</h1>
-        )
+          <ZipCode zip={(zip) => this.setState({
+            hasZipCode: true,
+            zipCode: zip
+          })} />
+        );
     } else {
         return (
           <Spinner />
-        )
+        );
+    }
+  }
+
+  renderZipStuff() {
+    if (this.state.hasZipCode) {
+      $('#form-overlay').css({ 'display': 'none' })
+      return (
+        <React.Fragment>
+          <WeatherComponent
+            zipCode={this.state.zipCode}
+          />
+        </React.Fragment>
+      );
     }
   }
 
@@ -51,6 +76,7 @@ export default class Home extends Component {
     return (
       <div>
         {this.renderComponents()}
+        {this.renderZipStuff()}
       </div>
     );
   }
