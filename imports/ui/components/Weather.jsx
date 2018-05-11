@@ -9,14 +9,14 @@ class WeatherComponent extends Component {
 
   componentDidMount() {
     let zip = this.props.zipCode;
-    let location = {
-      lat: this.props.location.latitude,
-      long: this.props.location.longitude
-    };
 
     if (this.props.zipCode) {
       this.props.getWeather({ zip });
     } else if (this.props.location) {
+      let location = {
+        lat: this.props.location.latitude,
+        long: this.props.location.longitude
+      };
       this.props.getGeoWeather({ location });
     }
   }
@@ -35,7 +35,7 @@ class WeatherComponent extends Component {
   render() {
     console.log(this.props);
     return (
-      <div>
+      <div className="weather-component">
         <h2>Weather Component</h2>
         {this.renderWeather()}
       </div>

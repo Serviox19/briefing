@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import WeatherComponent from '../components/Weather';
+import { Wrapper } from '../components/Wrapper';
 import ZipCode from '../components/ZipForm';
 import { Spinner } from '../components/Spinner';
 
@@ -40,9 +39,7 @@ export default class Home extends Component {
     if (this.state.hasLocation) {
       return (
         <React.Fragment>
-          <WeatherComponent
-            location={this.state.location}
-          />
+          <Wrapper location={this.state.location} />
         </React.Fragment>
       );
     } else if (this.state.locationFetchFailed) {
@@ -64,9 +61,7 @@ export default class Home extends Component {
       $('#form-overlay').css({ 'display': 'none' })
       return (
         <React.Fragment>
-          <WeatherComponent
-            zipCode={this.state.zipCode}
-          />
+          <Wrapper zipCode={this.state.zipCode} />
         </React.Fragment>
       );
     }
@@ -74,10 +69,10 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         {this.renderComponents()}
         {this.renderZipStuff()}
-      </div>
+      </React.Fragment>
     );
   }
 }

@@ -7,7 +7,6 @@ export default function(state = {}, action) {
     case GET_WEATHER:
       return action.payload.data.main;
     case GET_GEO_WEATHER:
-      console.log(action.payload);
       return action.payload.data.main;
   }
   return state;
