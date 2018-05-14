@@ -35,7 +35,7 @@ class WeatherComponent extends Component {
   render() {
     console.log(this.props);
     return (
-      <div className="weather-component">
+      <div id="weather-component">
         <h2>Weather Component</h2>
         {this.renderWeather()}
       </div>

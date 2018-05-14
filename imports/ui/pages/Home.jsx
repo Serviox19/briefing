@@ -38,9 +38,9 @@ export default class Home extends Component {
   renderComponents() {
     if (this.state.hasLocation) {
       return (
-        <React.Fragment>
-          <Wrapper location={this.state.location} />
-        </React.Fragment>
+        <Wrapper
+          location={this.state.location}
+        />
       );
     } else if (this.state.locationFetchFailed) {
         return (
@@ -58,11 +58,11 @@ export default class Home extends Component {
 
   renderZipStuff() {
     if (this.state.hasZipCode) {
-      $('#form-overlay').css({ 'display': 'none' })
+      $('#form-overlay').css({ 'display': 'none' });
       return (
-        <React.Fragment>
-          <Wrapper zipCode={this.state.zipCode} />
-        </React.Fragment>
+        <Wrapper
+          zipCode={this.state.zipCode}
+        />
       );
     }
   }

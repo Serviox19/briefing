@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 
 class TweetsComponent extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
-  componentDidMount() {
-    //stuff
-  }
+  componentDidMount() {}
 
   render() {
     return (
-      <div>
+      <div id="tweets-component">
         <h2>Tweets Component</h2>
       </div>
     );

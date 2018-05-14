@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { GET_WEATHER } from './types';
 import { GET_GEO_WEATHER } from './types';
+import { GET_NEWS } from './types';
 
 export const getWeather = ({ zip }) => {
   const apiKey = '10e2310812136c56b7f7d99a26e6ea19';
@@ -25,6 +26,19 @@ export const getGeoWeather = ({ location }) => {
 
   return {
     type: GET_GEO_WEATHER,
+    payload: request
+  }
+}
+
+export const getNews = () => {
+  const apiKey = 'b1eff68325b04271adb0e4956da610b4';
+
+  let uri = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`;
+
+  const request = axios.get(uri);
+
+  return {
+    type: GET_NEWS,
     payload: request
   }
 }

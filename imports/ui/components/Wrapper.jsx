@@ -1,6 +1,7 @@
 import React from 'react';
 import WeatherComponent from '../components/Weather';
-import TweetsComponent from '../components/TopTweets';
+import TweetsComponent from '../components/Tweets';
+import NewsComponent from '../components/News';
 
 export const Wrapper = ({ location, zipCode }) => {
   return (
@@ -10,7 +11,9 @@ export const Wrapper = ({ location, zipCode }) => {
         zipCode={zipCode}
       />
       <TweetsComponent
+        location={location}
       />
+      <NewsComponent />
     </React.Fragment>
   )
 }
