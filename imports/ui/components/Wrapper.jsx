@@ -1,6 +1,6 @@
 import React from 'react';
 import WeatherComponent from '../components/Weather';
-import TweetsComponent from '../components/Tweets';
+// import TweetsComponent from '../components/Tweets';
 import NewsComponent from '../components/News';
 
 export const Wrapper = ({ location, zipCode }) => {
@@ -9,9 +9,6 @@ export const Wrapper = ({ location, zipCode }) => {
       <WeatherComponent
         location={location}
         zipCode={zipCode}
-      />
-      <TweetsComponent
-        location={location}
       />
       <NewsComponent />
     </React.Fragment>

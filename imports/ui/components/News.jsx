@@ -28,7 +28,7 @@ class NewsComponent extends Component {
               }}
             />
           </div>
-          <div className="body" style={{  }}>
+          <div className="body">
             <h3>{article.title}</h3>
             <h5>Author: {article.author}</h5>
             <span style={{ position: 'absolute', bottom: 0 }}>{moment(article.publishedAt).format('MMMM Do YYYY, h:mm:ss a')}</span>

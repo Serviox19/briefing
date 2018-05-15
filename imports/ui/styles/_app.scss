@@ -3,6 +3,7 @@
    Base
 *********************************/
 @import "{}/imports/ui/styles/base/reset.scss";
+@import "{}/imports/ui/styles/base/global.scss";
 
 
 
@@ -10,5 +11,15 @@
 /*********************************
    Components
 *********************************/
+
+/** Preloaders **/
 @import "{}/imports/ui/styles/components/spinner.scss";
 @import "{}/imports/ui/styles/components/zip-form.scss";
+
+@import "{}/imports/ui/styles/components/weather.scss";
+
+
+
+/*********************************
+   Pages
+*********************************/
