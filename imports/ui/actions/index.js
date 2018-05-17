@@ -42,3 +42,18 @@ export const getNews = () => {
     payload: request
   }
 }
+
+export const getPlaces = ({ location }) => {
+  const apiKey = 'AIzaSyCka2mQJlMIfdJ2EcMfPi8Zx39ggavCOwY';
+
+  let uri = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
+  uri += `?loation=${location.lat,location.long}&radius=5000&key=${apiKey}`;
+  uri += `&`
+
+  const request = axios.get(uri);
+
+  return {
+    type: GET_PLACES,
+    payload: request
+  }
+}

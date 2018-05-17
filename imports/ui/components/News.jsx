@@ -29,9 +29,18 @@ class NewsComponent extends Component {
             />
           </div>
           <div className="body">
-            <h3>{article.title}</h3>
-            <h5>Author: {article.author}</h5>
-            <span style={{ position: 'absolute', bottom: 0 }}>{moment(article.publishedAt).format('MMMM Do YYYY, h:mm:ss a')}</span>
+            <a
+              style={{ textDecoration: 'none', color: '#000' }} href={article.url} target="_blank">
+              <h3>{article.title}</h3>
+            </a>
+            {article.author ? <h5 style={{ margin: '1em 0' }}> Author: {article.author}</h5> : <h5 style={{ margin: '1em 0' }}>Author: Unknown</h5>}
+            <h5
+              style={{
+                position: 'absolute',
+                bottom: 0
+              }}>
+              {moment(article.publishedAt).format('MMMM Do YYYY, h:mm:ss a')}
+            </h5>
           </div>
         </div>
       );
