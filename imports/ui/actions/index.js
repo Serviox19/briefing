@@ -2,6 +2,7 @@ import axios from 'axios';
 import { GET_WEATHER } from './types';
 import { GET_GEO_WEATHER } from './types';
 import { GET_NEWS } from './types';
+import { GET_PLACES } from './types';
 
 export const getWeather = ({ zip }) => {
   const apiKey = '10e2310812136c56b7f7d99a26e6ea19';
@@ -47,8 +48,8 @@ export const getPlaces = ({ location }) => {
   const apiKey = 'AIzaSyCka2mQJlMIfdJ2EcMfPi8Zx39ggavCOwY';
 
   let uri = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
-  uri += `?loation=${location.lat,location.long}&radius=5000&key=${apiKey}`;
-  uri += `&`
+  uri += `?loation=${location.latitude},${location.longitude}&radius=5000`;
+  uri += `&type=restaurant&keyword=cruise&key=${apiKey}`;
 
   const request = axios.get(uri);
 

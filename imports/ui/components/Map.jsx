@@ -5,12 +5,10 @@ import * as actions from '../actions';
 class MapComponent extends Component {
   constructor() {
     super();
-
-    let location = this.props.location;
-    this.props.getPlaces({ location });
   }
 
-  componentDidMount() {
+  renderMap() {
+    let location = this.props.location;
     let lat = this.props.location.latitude;
     let long = this.props.location.longitude;
 
@@ -32,7 +30,14 @@ class MapComponent extends Component {
     });
   }
 
+  componentDidMount() {
+    let location = this.props.location;
+    this.renderMap();
+    this.props.getPlaces({ location });
+  }
+
   render() {
+    console.log(this.props);
     return (
       <div id="map-component">
         <h2>Map Component</h2>
