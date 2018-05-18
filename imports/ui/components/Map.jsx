@@ -30,6 +30,17 @@ class MapComponent extends Component {
     });
   }
 
+  renderPlaces() {
+    return this.props.places.map((place) => {
+      return (
+        <div key={place.id}>
+          <span>{place.name}</span>
+          <span>{place.vicinity}</span>
+        </div>
+      );
+    });
+  }
+
   componentDidMount() {
     let location = this.props.location;
     this.renderMap();
@@ -43,7 +54,9 @@ class MapComponent extends Component {
         <h2>Map Component</h2>
         <div className="wrapper">
           <div id="map" ref="map"></div>
-          <div id="places-list"></div>
+          <div id="places-list">
+            {this.renderPlaces()}
+          </div>
         </div>
       </div>
     );

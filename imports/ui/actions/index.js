@@ -47,14 +47,23 @@ export const getNews = () => {
 export const getPlaces = ({ location }) => {
   const apiKey = 'AIzaSyCka2mQJlMIfdJ2EcMfPi8Zx39ggavCOwY';
 
-  let uri = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
-  uri += `?loation=${location.latitude},${location.longitude}&radius=5000`;
-  uri += `&type=restaurant&keyword=cruise&key=${apiKey}`;
+  // let uri = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
+  // uri += `?loation=${location.latitude},${location.longitude}&radius=5000`;
+  // uri += `&type=restaurant&keyword=cruise&key=${apiKey}`;
+  //
+  // const request = axios.get(uri);
 
-  const request = axios.get(uri);
+
+  Meteor.call('getPlaces', (error, res) => {
+    Session.set('placesResponse', res.data.results);
+  });
+
+  let request = Session.get('placesResponse');
 
   return {
     type: GET_PLACES,
     payload: request
   }
+
+  //valid https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=40.8469865,-74.1637401&radius=1500&type=restaurant&keyword=cruise&key=AIzaSyCka2mQJlMIfdJ2EcMfPi8Zx39ggavCOwY
 }

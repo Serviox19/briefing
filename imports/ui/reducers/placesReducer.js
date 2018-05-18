@@ -4,7 +4,8 @@ import { GET_PLACES } from '../actions/types';
 export default ((state = [], action) => {
   switch (action.type) {
     case GET_PLACES:
-      return action.payload.data;
+      console.log(action);
+      return action.payload;
   }
   return state;
 })

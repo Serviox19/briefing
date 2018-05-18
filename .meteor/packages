@@ -22,3 +22,5 @@ fourseven:scss
 react-meteor-data
 themeteorchef:bert
 webapp
+http
+session
