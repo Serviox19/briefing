@@ -31,7 +31,8 @@ class MapComponent extends Component {
   }
 
   renderPlaces() {
-    return this.props.places.map((place) => {
+    return this.props.places.map(place => {
+      console.log(place);
       return (
         <div key={place.id}>
           <span>{place.name}</span>
@@ -48,7 +49,7 @@ class MapComponent extends Component {
   }
 
   render() {
-    console.log(this.props);
+    console.log(this.props.places);
     return (
       <div id="map-component">
         <h2>Map Component</h2>

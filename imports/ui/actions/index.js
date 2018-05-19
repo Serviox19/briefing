@@ -46,15 +46,19 @@ export const getNews = () => {
 
 export const getPlaces = ({ location }) => {
   const apiKey = 'AIzaSyCka2mQJlMIfdJ2EcMfPi8Zx39ggavCOwY';
+  let lat = location.latitude.toFixed(7);
+  let long = location.longitude.toFixed(7);
 
-  // let uri = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
-  // uri += `?loation=${location.latitude},${location.longitude}&radius=5000`;
-  // uri += `&type=restaurant&keyword=cruise&key=${apiKey}`;
-  //
-  // const request = axios.get(uri);
+  let uri = `https://maps.googleapis.com/maps/api/place/nearbysearch/json`;
+  uri += `?location=${lat},${long}&radius=1500`;
+  uri += `&type=restaurant&keyword=cruise&key=${apiKey}`;
+
+  Session.set('query', uri)
+  let query = Session.get('query');
+  console.log(query);
 
 
-  Meteor.call('getPlaces', (error, res) => {
+  Meteor.call('getPlaces', query, (error, res) => {
     Session.set('placesResponse', res.data.results);
   });
 

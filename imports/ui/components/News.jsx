@@ -11,7 +11,7 @@ class NewsComponent extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
+    //
   }
 
   renderNews() {
@@ -48,7 +48,6 @@ class NewsComponent extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div id="news-component"
         style={{

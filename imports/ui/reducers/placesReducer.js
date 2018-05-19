@@ -5,7 +5,8 @@ export default ((state = [], action) => {
   switch (action.type) {
     case GET_PLACES:
       console.log(action);
-      return action.payload;
+      return [action.payload];
+    default:
+      return state
   }
-  return state;
 })
