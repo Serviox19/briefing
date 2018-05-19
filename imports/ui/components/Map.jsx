@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 class MapComponent extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   renderMap() {
@@ -31,11 +31,10 @@ class MapComponent extends Component {
   }
 
   renderPlaces() {
-    return this.props.places.map(place => {
-      console.log(place);
+    return this.props.places.map((place, index) => {
       return (
-        <div key={place.id}>
-          <span>{place.name}</span>
+        <div key={index}>
+          <span>{place.name}</span>&nbsp;&nbsp;
           <span>{place.vicinity}</span>
         </div>
       );
@@ -44,8 +43,8 @@ class MapComponent extends Component {
 
   componentDidMount() {
     let location = this.props.location;
-    this.renderMap();
     this.props.getPlaces({ location });
+    this.renderMap();
   }
 
   render() {

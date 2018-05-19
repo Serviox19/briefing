@@ -18,6 +18,22 @@
       width: 40%;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
+      padding: 0 1.5em;
+
+      .place {
+        display: flex;
+        flex-direction: column;
+        height: 50px;
+
+        .name {
+          display: inline-block;
+        }
+
+        .address {
+          display: inline-block;
+        }
+      }
     }
   }
 }

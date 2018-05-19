@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import axios from 'axios';
 import { GET_WEATHER } from './types';
 import { GET_GEO_WEATHER } from './types';
@@ -45,29 +46,19 @@ export const getNews = () => {
 }
 
 export const getPlaces = ({ location }) => {
-  const apiKey = 'AIzaSyCka2mQJlMIfdJ2EcMfPi8Zx39ggavCOwY';
   let lat = location.latitude.toFixed(7);
   let long = location.longitude.toFixed(7);
 
-  let uri = `https://maps.googleapis.com/maps/api/place/nearbysearch/json`;
-  uri += `?location=${lat},${long}&radius=1500`;
-  uri += `&type=restaurant&keyword=cruise&key=${apiKey}`;
+  let coords = {lat, long};
 
-  Session.set('query', uri)
-  let query = Session.get('query');
-  console.log(query);
-
-
-  Meteor.call('getPlaces', query, (error, res) => {
+  Meteor.call('getPlaces', coords, (error, res) => {
     Session.set('placesResponse', res.data.results);
   });
 
-  let request = Session.get('placesResponse');
+  let response = Session.get('placesResponse');
 
   return {
     type: GET_PLACES,
-    payload: request
+    payload: response
   }
-
-  //valid https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=40.8469865,-74.1637401&radius=1500&type=restaurant&keyword=cruise&key=AIzaSyCka2mQJlMIfdJ2EcMfPi8Zx39ggavCOwY
 }
