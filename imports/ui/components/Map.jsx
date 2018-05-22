@@ -5,6 +5,13 @@ import * as actions from '../actions';
 class MapComponent extends Component {
   constructor(props) {
     super(props);
+
+    let location = this.props.location;
+    this.props.getPlaces({ location });
+  }
+
+  componentDidMount() {
+    this.renderMap();
   }
 
   renderMap() {
@@ -30,32 +37,28 @@ class MapComponent extends Component {
     });
   }
 
-  renderPlaces() {
-    return this.props.places.map((place, index) => {
+  renderPlaces(places) {
+    console.log(places);
+    return places.map((place, index) => {
       return (
-        <div key={index}>
-          <span>{place.name}</span>&nbsp;&nbsp;
-          <span>{place.vicinity}</span>
+        <div className="place"
+          key={index}
+          onClick={() => console.log(alert(place.name))}>
+          <span className="name">{place.name}</span>&nbsp;&nbsp;
+          <span className="address">{place.vicinity}</span>
         </div>
       );
     });
   }
 
-  componentDidMount() {
-    let location = this.props.location;
-    this.props.getPlaces({ location });
-    this.renderMap();
-  }
-
   render() {
-    console.log(this.props.places);
     return (
       <div id="map-component">
         <h2>Map Component</h2>
         <div className="wrapper">
           <div id="map" ref="map"></div>
           <div id="places-list">
-            {this.renderPlaces()}
+            {this.renderPlaces(this.props.places)}
           </div>
         </div>
       </div>

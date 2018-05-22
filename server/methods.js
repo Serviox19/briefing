@@ -2,7 +2,6 @@ import { Meteor } from 'meteor/meteor';
 import { HTTP } from 'meteor/http';
 
 let apiKey = 'AIzaSyCka2mQJlMIfdJ2EcMfPi8Zx39ggavCOwY';
-
 let uri = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=';
 let params = '&radius=5000&type=restaurant&key=';
 params += apiKey;

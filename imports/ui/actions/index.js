@@ -52,7 +52,8 @@ export const getPlaces = ({ location }) => {
   let coords = {lat, long};
 
   Meteor.call('getPlaces', coords, (error, res) => {
-    Session.set('placesResponse', res.data.results);
+    let data = res.data.results;
+    Session.set('placesResponse', data);
   });
 
   let response = Session.get('placesResponse');
