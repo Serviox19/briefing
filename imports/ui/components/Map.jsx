@@ -8,6 +8,10 @@ class MapComponent extends Component {
 
     let location = this.props.location;
     this.props.getPlaces({ location });
+
+    this.state = {
+      map: {}
+    }
   }
 
   componentDidMount() {
@@ -27,7 +31,9 @@ class MapComponent extends Component {
       zoom: 15
     });
 
-    const marker = new google.maps.Marker({
+    this.setState({ map });
+
+    const initialMarker = new google.maps.Marker({
       position: {
         lat: lat,
         lng: long
@@ -37,13 +43,29 @@ class MapComponent extends Component {
     });
   }
 
+  markPlace(place) {
+    console.log(place);
+    let lat = place.geometry.location.lat;
+    let lng = place.geometry.location.lng;
+
+    const newMarker = new google.maps.Marker({
+      position: { lat, lng },
+      map: this.state.map,
+      title: `${place.name}`
+    });
+
+    newMarker.setMap(this.state.map);
+    this.state.map.setCenter({ lat, lng });
+  }
+
   renderPlaces(places) {
     console.log(places);
+    const _this = this;
     return places.map((place, index) => {
       return (
         <div className="place"
           key={index}
-          onClick={() => console.log(alert(place.name))}>
+          onClick={() => this.markPlace(place)}>
           <span className="name">{place.name}</span>&nbsp;&nbsp;
           <span className="address">{place.vicinity}</span>
         </div>
