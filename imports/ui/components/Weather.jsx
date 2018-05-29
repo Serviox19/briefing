@@ -22,9 +22,11 @@ class WeatherComponent extends Component {
   }
 
   renderWeather() {
+    let link = "http://openweathermap.org/img/w/" + this.props.icon + ".png";
+    console.log(link);
     return (
       <div className="wrapper">
-        <img src="http://openweathermap.org/img/w/01d.png" />
+        <img src={link} />
         <div className="temp">
           <h3>Temperature: {this.props.weather.temp}</h3>
           <h3>Max Temp: {this.props.weather.temp_max}</h3>
