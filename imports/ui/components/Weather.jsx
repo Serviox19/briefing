@@ -23,12 +23,15 @@ class WeatherComponent extends Component {
 
   renderWeather() {
     return (
-      <React.Fragment>
-        <h3>Temperature: {this.props.weather.temp}</h3>
-        <h3>Max Temp: {this.props.weather.temp_max}</h3>
-        <h3>Min Temp: {this.props.weather.temp_min}</h3>
-        <h3>Humidity: {this.props.weather.humidity}</h3>
-      </React.Fragment>
+      <div className="wrapper">
+        <img src="http://openweathermap.org/img/w/01d.png" />
+        <div className="temp">
+          <h3>Temperature: {this.props.weather.temp}</h3>
+          <h3>Max Temp: {this.props.weather.temp_max}</h3>
+          <h3>Min Temp: {this.props.weather.temp_min}</h3>
+          <h3>Humidity: {this.props.weather.humidity}</h3>
+        </div>
+      </div>
     );
   }
 
@@ -42,8 +45,8 @@ class WeatherComponent extends Component {
   }
 }
 
-const mapStateToProps = ({ weather }) => {
-  return { weather };
+const mapStateToProps = ({ weather, icon }) => {
+  return { weather, icon };
 };
 
 export default connect(mapStateToProps, actions)(WeatherComponent);

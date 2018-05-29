@@ -53,6 +53,7 @@ export const getPlaces = ({ location }) => {
 
   Meteor.call('getPlaces', coords, (error, res) => {
     let data = res.data.results;
+    // console.log(data);
     Session.set('placesResponse', data);
   });
 

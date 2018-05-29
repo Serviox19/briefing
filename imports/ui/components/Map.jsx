@@ -49,8 +49,9 @@ class MapComponent extends Component {
     let lng = place.geometry.location.lng;
 
     const newMarker = new google.maps.Marker({
-      position: { lat, lng },
+      animation: google.maps.Animation.DROP,
       map: this.state.map,
+      position: { lat, lng },
       title: `${place.name}`
     });
 
