@@ -1,9 +1,11 @@
 import { Meteor } from 'meteor/meteor';
 import axios from 'axios';
-import { GET_WEATHER } from './types';
-import { GET_GEO_WEATHER } from './types';
-import { GET_NEWS } from './types';
-import { GET_PLACES } from './types';
+import {
+  GET_WEATHER,
+  GET_GEO_WEATHER,
+  GET_NEWS,
+  GET_PLACES
+} from './types';
 
 export const getWeather = ({ zip }) => {
   const apiKey = '10e2310812136c56b7f7d99a26e6ea19';
@@ -42,25 +44,5 @@ export const getNews = () => {
   return {
     type: GET_NEWS,
     payload: request
-  }
-}
-
-export const getPlaces = ({ location }) => {
-  let lat = location.latitude.toFixed(7);
-  let long = location.longitude.toFixed(7);
-
-  let coords = {lat, long};
-
-  Meteor.call('getPlaces', coords, (error, res) => {
-    let data = res.data.results;
-    // console.log(data);
-    Session.set('placesResponse', data);
-  });
-
-  let response = Session.get('placesResponse');
-
-  return {
-    type: GET_PLACES,
-    payload: response
   }
 }

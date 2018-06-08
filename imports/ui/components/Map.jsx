@@ -6,16 +6,33 @@ class MapComponent extends Component {
   constructor(props) {
     super(props);
 
-    let location = this.props.location;
-    this.props.getPlaces({ location });
-
     this.state = {
-      map: {}
+      map: {},
+      places: []
     }
   }
 
   componentDidMount() {
+    this.getPlaces();
     this.renderMap();
+  }
+
+  getPlaces() {
+    let location = this.props.location;
+    let lat = location.latitude.toFixed(7);
+    let long = location.longitude.toFixed(7);
+
+    let coords = {lat, long};
+
+    Meteor.call('getPlaces', coords, (error, res) => {
+      if (error) {
+        console.log(error);
+      } else {
+        let data = res.data.results;
+        console.log(data);
+        this.setState({ places: data });
+      }
+    });
   }
 
   renderMap() {
@@ -60,8 +77,6 @@ class MapComponent extends Component {
   }
 
   renderPlaces(places) {
-    console.log(places);
-    const _this = this;
     return places.map((place, index) => {
       return (
         <div className="place"
@@ -81,7 +96,7 @@ class MapComponent extends Component {
         <div className="wrapper">
           <div id="map" ref="map"></div>
           <div id="places-list">
-            {this.renderPlaces(this.props.places)}
+            {this.renderPlaces(this.state.places)}
           </div>
         </div>
       </div>
@@ -89,8 +104,4 @@ class MapComponent extends Component {
   }
 }
 
-const mapStateToProps = ({ places }) => {
-  return { places };
-}
-
-export default connect(mapStateToProps, actions)(MapComponent);
+export default MapComponent;

@@ -23,7 +23,6 @@ class WeatherComponent extends Component {
 
   renderWeather() {
     let link = "http://openweathermap.org/img/w/" + this.props.icon + ".png";
-    console.log(link);
     return (
       <div className="wrapper">
         <img src={link} />
@@ -38,7 +37,7 @@ class WeatherComponent extends Component {
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div id="weather-component">
         {this.renderWeather()}

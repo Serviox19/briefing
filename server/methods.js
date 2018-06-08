@@ -12,6 +12,6 @@ Meteor.methods({
     let request = uri+coords+params;
     console.log(`Request: ${request}`);
     this.unblock();
-    return HTTP.get(request, {});
+    return HTTP.call('GET', request, {});
   }
 });
